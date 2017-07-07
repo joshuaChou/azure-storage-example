@@ -3,8 +3,9 @@ import * as fs from 'fs'
 import * as path from 'path'
 import * as uuid from 'uuid'
 import * as color from 'colors'
+import config from './config'
 
-const connectionStr = "{your connection string}"
+const connectionStr = config.connectionStr
 
 const defaultContainerName = 'car'
 
@@ -49,11 +50,16 @@ export default class CarSharing {
         return new Promise((resolve, reject) => {
             blobSvc.listBlobsSegmented(containerName, null, (error, result, response) => {
                 if (!error) {
-                    console.log('===========List All file=============')
-                    result.entries.forEach((element: any) => {
-                        console.log(element.name.green)
-                    });
-                    console.log('=====================================')
+                    if(result.entries.length>1){
+                        console.log('===========List All file=============')
+                        result.entries.forEach((element: any) => {
+                            console.log(color.green(element.name))
+                        });
+                        console.log('=====================================')
+                    }else{
+                        console.log('Container No files'.cyan);
+                    }
+                   
                 }
 
                 return resolve(result.entries)
@@ -113,7 +119,7 @@ down  download all files in car share folder
 
 `)
 }else{
-    carshare.listFolder(defaultContainerName)
+    returnEntities = carshare.listFolder(defaultContainerName)
 }
 
 

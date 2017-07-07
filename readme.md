@@ -8,9 +8,17 @@
 
 `npm install` 
 
-show help command
+### Init config 
+
+`npm run init`
+
+> set your connection string in config.ts 
+
+### show help command
 
 `npm run help` 
+
+### start example
 
 `npm start`
 

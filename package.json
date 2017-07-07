@@ -7,7 +7,8 @@
     "test": "standard",
     "build": "tsc ",
     "start": "tsc && node ./dist/index.js ",
-    "help": "tsc && node ./dist/index.js help "
+    "help": "tsc && node ./dist/index.js help ",
+    "init": "echo  export default \\{\\\"connectionStr\\\":\\\"{you key}\\\"\\} >> ./src/config.ts && mkdir upload"
   },
   "author": "",
   "license": "ISC",
